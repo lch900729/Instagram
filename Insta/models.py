@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from imagekit.models import ProcessedImageField
 
 # Create your models here.
@@ -9,4 +10,7 @@ class Post(models.Model):
         format = 'JPEG',
         blank = True,
         null = True,)
+    
+    def get_absolute_url(self):
+        return reverse("post_detail", args=[str(self.title)])
     
